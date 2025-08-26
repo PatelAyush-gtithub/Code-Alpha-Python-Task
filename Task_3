@@ -1,0 +1,25 @@
+def chatbot():
+    """
+    A very simple rule-based chatbot.
+    Responds to basic greetings and questions.
+    """
+
+    print("🤖 Chatbot: Hello! Type 'bye' to exit.\n")
+
+    while True:
+        user_input = input("You: ").lower()
+
+        if user_input == "hello":
+            print("🤖 Chatbot: Hi there!")
+        elif user_input == "how are you":
+            print("🤖 Chatbot: I'm fine, thanks! How about you?")
+        elif user_input == "bye":
+            print("🤖 Chatbot: Goodbye! Have a great day. 👋")
+            break
+        elif user_input.strip() == "":
+            print("🤖 Chatbot: Please say something...")
+        else:
+            print("🤖 Chatbot: Sorry, I don't understand that.")
+
+if __name__ == "__main__":
+    chatbot()

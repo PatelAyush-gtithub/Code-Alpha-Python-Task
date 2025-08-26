@@ -1,0 +1,53 @@
+def stock_portfolio_tracker():
+    """
+    A simple stock portfolio tracker.
+    User enters stock names and quantities.
+    Stock prices are predefined in a dictionary.
+    """
+
+    stock_prices = {
+        "AAPL": 180,   # Apple
+        "TSLA": 250,   # Tesla
+        "MSFT": 330,   # Microsoft
+        "GOOG": 140,   # Alphabet (Google)
+        "AMZN": 135    # Amazon
+    }
+
+    portfolio = {}  
+    total_value = 0
+
+    print("===== Stock Portfolio Tracker =====")
+    print("Available stocks:", ", ".join(stock_prices.keys()))
+    print("Enter 'done' when you are finished adding stocks.\n")
+
+    while True:
+        stock = input("Enter stock symbol (or 'done'): ").upper()
+
+        if stock == "DONE":
+            break
+
+        if stock not in stock_prices:
+            print(" Stock not found in the list. Try again.\n")
+            continue
+
+        try:
+            quantity = int(input(f"Enter quantity of {stock}: "))
+        except ValueError:
+            print(" Please enter a valid number.\n")
+            continue
+
+        if stock in portfolio:
+            portfolio[stock] += quantity
+        else:
+            portfolio[stock] = quantity
+
+    print("\n===== Portfolio Summary =====")
+    for stock, qty in portfolio.items():
+        value = qty * stock_prices[stock]
+        total_value += value
+        print(f"{stock} - {qty} shares @ ${stock_prices[stock]} each = ${value}")
+
+    print(f"\n💰 Total Portfolio Value: ${total_value}")
+
+if __name__ == "__main__":
+    stock_portfolio_tracker()
